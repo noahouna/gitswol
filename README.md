@@ -1,0 +1,2 @@
+# githrd
+Workout schedule generator
