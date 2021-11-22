@@ -1,0 +1,12 @@
+html {
+    background: linear-gradient(315deg,#DEB887 0%, #B22222 74%) no-repeat center fixed;
+    background-size: cover;
+  }
+  
+  
+  .flexbox-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
