@@ -156,26 +156,28 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
     for (let day = 0; day < 7; day++)
     {
         // Friday is athletic regen day
-        if (day == 4) {workout_schedule[day].workout = stretches[0];
-            continue;}
+        if (day == 4) {workout_schedule[day].workout = stretches[0]; continue;}
 
         if (num_swim != 0)
         {
             random_bit_0 = Math.round(Math.random());
-            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (swims.length - 1)); workout_schedule[day].workout = swims[random_int]; continue;}
+            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (swims.length - 1)); workout_schedule[day].workout = swims[random_int];
+                num_swim -= num_swim; continue;}
             else {continue} // iterate to next day in either case
         }
         if (num_lifts != 0)
         {
             random_bit_0 = Math.round(Math.random());
-            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (strength_sessions.length - 1)); workout_schedule[day].workout = strength_sessions[random_int]; continue;}
-            else {continue} // iterate to next day in either case
+            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (strength_sessions.length - 1)); workout_schedule[day].workout = strength_sessions[random_int];
+                num_lifts -= num_lifts; continue;}
+            else {continue} 
         }
         if (num_run != 0)
         {
             random_bit_0 = Math.round(Math.random());
-            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (runs.length - 1)); workout_schedule[day].workout = runs[random_int]; continue;}
-            else {continue} // iterate to next day in either case
+            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (runs.length - 1)); workout_schedule[day].workout = runs[random_int];
+                num_run -= num_run; continue;}
+            else {continue} 
         }
     }
 }
