@@ -149,37 +149,58 @@ function black_saturday (extended_training_day) {
 extended_training_day = black_saturday();
 
 // Each day of the week will display title of workout, and workout
-let workout_schedule = [{workout: null}, {workout: null},{workout: null},{workout: null},{workout: null},{workout: null},{workout: null}];
+
+// Create workout schedule to be filled with semi-random workouts
+let workout_schedule = [{workout: []}, {workout: []},{workout: []},{workout: []},{workout: []},{workout: []},{workout: []}];
+
+// Function to check if proposed workout shares 'type' with another workout scheduled on same day
+function check_workout (proposed_workout, day) 
+{
+    for (let i = 0; i < workout_schedule[day].workout.length; i++)
+    {
+        if (proposed_workout.type == workout_schedule[day].workout[i].type) {return false}
+    }
+    return true;
+}
 
 while (num_run != 0 || num_swim != 0 || num_lifts != 0)
 {
     for (let day = 0; day < 7; day++)
     {
-        // Friday is athletic regen day
-        if (day == 4) {workout_schedule[day].workout = stretches[0]; continue;}
+        // Skip reserved athletic regen day and
+        if (day == 4) {continue;}
 
         if (num_swim != 0)
         {
             random_bit_0 = Math.round(Math.random());
-            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (swims.length - 1)); workout_schedule[day].workout = swims[random_int];
-                num_swim -= num_swim; continue;}
+            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (swims.length - 1));
+                let unique_type = check_workout(swims[random_int], day);
+                if (unique_type == true) 
+                { workout_schedule[day].workout.push(swims[random_int]); num_swim -= 1; continue; }}
             else {continue} // iterate to next day in either case
         }
         if (num_lifts != 0)
         {
             random_bit_0 = Math.round(Math.random());
-            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (strength_sessions.length - 1)); workout_schedule[day].workout = strength_sessions[random_int];
-                num_lifts -= num_lifts; continue;}
+            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (strength_sessions.length - 1));
+                let unique_type = check_workout(strength_sessions[random_int], day);
+                if (unique_type == true) 
+                { workout_schedule[day].workout.push(strength_sessions[random_int]); num_lifts -= 1; continue; }}
             else {continue} 
         }
         if (num_run != 0)
         {
             random_bit_0 = Math.round(Math.random());
-            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (runs.length - 1)); workout_schedule[day].workout = runs[random_int];
-                num_run -= num_run; continue;}
+            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (runs.length - 1));
+                let unique_type = check_workout(runs[random_int], day);
+                if (unique_type == true) 
+                { workout_schedule[day].workout.push(runs[random_int]); num_run -= 1; continue; }}
             else {continue} 
         }
     }
 }
+
+// Friday is athletic regen day
+workout_schedule[4].workout = stretches[0];
 
 console.log(workout_schedule);
