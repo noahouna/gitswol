@@ -242,3 +242,4 @@ workout_schedule[4].workout = stretches[0];
 
 
 document.getElementById("monday_name_1").innerHTML = workout_schedule[0].workout[0].name;
+document.getElementById("monday_name_1").innerHTML = workout_schedule[0].workout[1].name;
