@@ -240,6 +240,52 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
 // Friday is athletic regen day
 workout_schedule[4].workout = stretches[0];
 
-
+// Print schedule to table
 document.getElementById("monday_name_1").innerHTML = workout_schedule[0].workout[0].name;
-document.getElementById("monday_name_1").innerHTML = workout_schedule[0].workout[1].name;
+document.getElementById("monday_workout_1").innerHTML = workout_schedule[0].workout[1].workout;
+document.getElementById("monday_name_2").innerHTML = workout_schedule[1].workout[0].name;
+document.getElementById("monday_workout_2").innerHTML = workout_schedule[1].workout[1].workout;
+document.getElementById("monday_name_3").innerHTML = workout_schedule[2].workout[0].name;
+document.getElementById("monday_workout_3").innerHTML = workout_schedule[2].workout[1].workout;
+
+document.getElementById("tuesday_name_1").innerHTML = workout_schedule[0].workout[0].name;
+document.getElementById("tuesday_workout_1").innerHTML = workout_schedule[0].workout[1].workout;
+document.getElementById("tuesday_name_2").innerHTML = workout_schedule[1].workout[0].name;
+document.getElementById("tuesday_workout_").innerHTML = workout_schedule[1].workout[1].workout;
+document.getElementById("tuesday_name_3").innerHTML = workout_schedule[2].workout[0].name;
+document.getElementById("tuesday_workout_3").innerHTML = workout_schedule[2].workout[1].workout;
+
+document.getElementById("wednesday_name_1").innerHTML = workout_schedule[0].workout[0].name;
+document.getElementById("wednesday_workout_1").innerHTML = workout_schedule[0].workout[1].workout;
+document.getElementById("wednesday_name_2").innerHTML = workout_schedule[1].workout[0].name;
+document.getElementById("wednesday_workout_2").innerHTML = workout_schedule[1].workout[1].workout;
+document.getElementById("wednesday_name_3").innerHTML = workout_schedule[2].workout[0].name;
+document.getElementById("wednesday_workout_3").innerHTML = workout_schedule[2].workout[1].workout;
+
+document.getElementById("thursday_name_1").innerHTML = workout_schedule[0].workout[0].name;
+document.getElementById("thursday_workout_1").innerHTML = workout_schedule[0].workout[1].workout;
+document.getElementById("thursday_name_2").innerHTML = workout_schedule[1].workout[0].name;
+document.getElementById("thursday_workout_").innerHTML = workout_schedule[1].workout[1].workout;
+document.getElementById("thursday_name_3").innerHTML = workout_schedule[2].workout[0].name;
+document.getElementById("thursday_workout_3").innerHTML = workout_schedule[2].workout[1].workout;
+
+document.getElementById("friday_name_1").innerHTML = workout_schedule[0].workout[0].name;
+document.getElementById("friday_workout_1").innerHTML = workout_schedule[0].workout[1].workout;
+document.getElementById("friday_name_2").innerHTML = workout_schedule[1].workout[0].name;
+document.getElementById("friday_workout_2").innerHTML = workout_schedule[1].workout[1].workout;
+document.getElementById("friday_name_3").innerHTML = workout_schedule[2].workout[0].name;
+document.getElementById("friday_workout_3").innerHTML = workout_schedule[2].workout[1].workout;
+
+document.getElementById("saturday_name_1").innerHTML = workout_schedule[0].workout[0].name;
+document.getElementById("saturday_workout_1").innerHTML = workout_schedule[0].workout[1].workout;
+document.getElementById("saturday_name_2").innerHTML = workout_schedule[1].workout[0].name;
+document.getElementById("saturday_workout_2").innerHTML = workout_schedule[1].workout[1].workout;
+document.getElementById("saturday_name_3").innerHTML = workout_schedule[2].workout[0].name;
+document.getElementById("saturdayday_workout_3").innerHTML = workout_schedule[2].workout[1].workout;
+
+document.getElementById("sunday_name_1").innerHTML = workout_schedule[0].workout[0].name;
+document.getElementById("sunday_workout_1").innerHTML = workout_schedule[0].workout[1].workout;
+document.getElementById("sunday_name_2").innerHTML = workout_schedule[1].workout[0].name;
+document.getElementById("sunday_workout_2").innerHTML = workout_schedule[1].workout[1].workout;
+document.getElementById("sunday_name_3").innerHTML = workout_schedule[2].workout[0].name;
+document.getElementById("sunday_workout_3").innerHTML = workout_schedule[2].workout[1].workout;
