@@ -138,8 +138,8 @@ const miscellaneous =
     distance_duration: '1100 yards' }
 ]
 
-// Determine if week includes extended training day
 
+// Determine if week includes extended training day
 function black_saturday (extended_training_day) {
     random_bit = Math.round(Math.random() - 0.1); // 60% chance for no ETD
     if (random_bit == 0) {extended_training_day = false;}
@@ -147,6 +147,7 @@ function black_saturday (extended_training_day) {
     return extended_training_day;
 }
 extended_training_day = black_saturday();
+
 
 // Each day of the week will display title of workout, and workout
 
@@ -188,28 +189,46 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
         if (num_swim != 0)
         {
             let random_bit_0 = Math.round(Math.random());
-            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (swims.length - 1));
+            if (random_bit_0 == 0)
+            {
+                let random_int = Math.floor(Math.random() * (swims.length - 1));
                 let unique_type = check_workout(swims[random_int], day);
                 if (unique_type == true) 
-                { workout_schedule[day].workout.push(swims[random_int]); num_swim -= 1; continue; }}
+                {
+                    workout_schedule[day].workout.push(swims[random_int]); num_swim -= 1;
+                    continue;
+                }
+            }
             else {continue} // iterate to next day in either case
         }
         if (num_lifts != 0)
         {
             let random_bit_0 = Math.round(Math.random());
-            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (strength_sessions.length - 1));
+            if (random_bit_0 == 0)
+            {
+                let random_int = Math.floor(Math.random() * (strength_sessions.length - 1));
                 let unique_type = check_workout(strength_sessions[random_int], day);
                 if (unique_type == true) 
-                { workout_schedule[day].workout.push(strength_sessions[random_int]); num_lifts -= 1; continue; }}
+                {
+                    workout_schedule[day].workout.push(strength_sessions[random_int]); num_lifts -= 1;
+                    continue;
+                }
+            }
             else {continue} 
         }
         if (num_run != 0)
         {
             let random_bit_0 = Math.round(Math.random());
-            if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (runs.length - 1));
+            if (random_bit_0 == 0)
+            {
+                let random_int = Math.floor(Math.random() * (runs.length - 1));
                 let unique_type = check_workout(runs[random_int], day);
                 if (unique_type == true) 
-                { workout_schedule[day].workout.push(runs[random_int]); num_run -= 1; continue; }}
+                {
+                    workout_schedule[day].workout.push(runs[random_int]); num_run -= 1;
+                    continue;
+                }
+            }
             else {continue} 
         }
     }
