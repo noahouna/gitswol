@@ -1,2 +1,2 @@
-# gitswol
+# githrd
 Workout schedule generator
