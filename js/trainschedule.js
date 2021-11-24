@@ -156,10 +156,22 @@ let workout_schedule = [{workout: []}, {workout: []},{workout: []},{workout: []}
 // Function to check if proposed workout shares 'type' with another workout scheduled on same day
 function check_workout (proposed_workout, day) 
 {
+    // Check if workout of same type has been done that day
     for (let i = 0; i < workout_schedule[day].workout.length; i++)
     {
         if (proposed_workout.type == workout_schedule[day].workout[i].type) {return false}
     }
+
+    // Check if workout name is already in the week schedule
+    for (let i = 0; i < workout_schedule.length; i++)
+    {
+        for (let j = 0; j < workout_schedule[day].workout.length; j++)
+        {
+            if (proposed_workout.name == workout_schedule[i].workout[j].name) {return false}
+        }
+    }
+
+    // Proposed workout is good to add to schedule
     return true;
 }
 
@@ -172,7 +184,7 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
 
         if (num_swim != 0)
         {
-            random_bit_0 = Math.round(Math.random());
+            let random_bit_0 = Math.round(Math.random());
             if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (swims.length - 1));
                 let unique_type = check_workout(swims[random_int], day);
                 if (unique_type == true) 
@@ -181,7 +193,7 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
         }
         if (num_lifts != 0)
         {
-            random_bit_0 = Math.round(Math.random());
+            let random_bit_0 = Math.round(Math.random());
             if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (strength_sessions.length - 1));
                 let unique_type = check_workout(strength_sessions[random_int], day);
                 if (unique_type == true) 
@@ -190,7 +202,7 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
         }
         if (num_run != 0)
         {
-            random_bit_0 = Math.round(Math.random());
+            let random_bit_0 = Math.round(Math.random());
             if (random_bit_0 == 0) {let random_int = Math.floor(Math.random() * (runs.length - 1));
                 let unique_type = check_workout(runs[random_int], day);
                 if (unique_type == true) 
