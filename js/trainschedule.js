@@ -83,7 +83,7 @@ const strength_sessions =
     distance_duration: '1900 yards' },
 {
     name: 'Functional Pull Session',
-    type: 'strength', // change focus to array of muscle groups to be as specific as possible
+    type: 'strength',
     focus: ['aerobic'],
     workout: 'Warm Up\n300yd mixed stroke (free, breast, css)\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice',
     distance_duration: '2000 yards' },
@@ -156,7 +156,6 @@ let workout_schedule = [{workout: []}, {workout: []},{workout: []},{workout: []}
 // Function to check if proposed workout shares 'type' with another workout scheduled on same day
 function check_workout (proposed_workout, day) 
 {
-    console.log(proposed_workout);
     // Check if workout of same type has been done that day
     for (let i = 0; i < workout_schedule[day].workout.length; i++)
     {
