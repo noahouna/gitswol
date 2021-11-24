@@ -156,6 +156,7 @@ let workout_schedule = [{workout: []}, {workout: []},{workout: []},{workout: []}
 // Function to check if proposed workout shares 'type' with another workout scheduled on same day
 function check_workout (proposed_workout, day) 
 {
+    console.log(proposed_workout);
     // Check if workout of same type has been done that day
     for (let i = 0; i < workout_schedule[day].workout.length; i++)
     {
