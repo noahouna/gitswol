@@ -168,7 +168,10 @@ function check_workout (proposed_workout, day)
     {
         for (let j = 0; j < workout_schedule[day].workout.length; j++)
         {
-            if (proposed_workout.name == workout_schedule[i].workout[j].name) {return false}
+            if (workout_schedule[i].workout.length > 0)
+            {
+                if (proposed_workout.name == workout_schedule[i].workout[j].name) {return false}
+            }
         }
     }
 
