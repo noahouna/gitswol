@@ -149,8 +149,6 @@ function black_saturday (extended_training_day) {
 extended_training_day = black_saturday();
 
 
-// Each day of the week will display title of workout, and workout
-
 // Create workout schedule to be filled with semi-random workouts
 let workout_schedule = [{workout: []}, {workout: []},{workout: []},{workout: []},{workout: []},{workout: []},{workout: []}];
 
@@ -172,6 +170,7 @@ function check_workout (proposed_workout, day)
             {
                 if (proposed_workout.name == workout_schedule[i].workout[j].name) {return false;}
             }
+            else {break;}
         }
     }
 
@@ -240,6 +239,8 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
 // Friday is athletic regen day
 workout_schedule[4].workout = stretches[0];
 
+
+// Each day of the week will display title of workout, and workout
 // Print schedule to table
 document.getElementById("monday_name_1").innerHTML = workout_schedule[0].workout[0].name;
 document.getElementById("monday_workout_1").innerHTML = workout_schedule[0].workout[0].workout;
