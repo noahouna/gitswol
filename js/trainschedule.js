@@ -1,16 +1,3 @@
-// retrieve desired number of training sessions from previous page using URL
-
-const link = window.location.href;
-const split = link.split("?")[1].split("=")[1];
-const decode = decodeURI(split);
-const data = JSON.parse(decode);
-
-let num_run = data[0];
-let num_swim = data[1];
-let num_lifts = data[2];
-
-let extended_training_day;
-
 const swims = 
 [
 { 
@@ -137,158 +124,139 @@ const miscellaneous =
     workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice',
     distance_duration: '1100 yards' }
 ]
+// picking workout, check for type match same day (delete if picked), then picking random day to do workout
 
-
-// Determine if week includes extended training day
 function black_saturday (extended_training_day) {
+    // Determine if week includes extended training day
     random_bit = Math.round(Math.random() - 0.1); // 60% chance for no ETD
     if (random_bit == 0) {extended_training_day = false;}
     else {extended_training_day = true;}
     return extended_training_day;
 }
-extended_training_day = black_saturday();
 
+/*
+May be useless with new design
 
-// Create workout schedule to be filled with semi-random workouts
-let workout_schedule = [{workout: []}, {workout: []},{workout: []},{workout: []},{workout: []},{workout: []},{workout: []}];
+function random_bit() {let bit = Math.round(Math.random()); return bit; }
+*/
 
-// Function to check if proposed workout shares 'type' with another workout scheduled on same day
-function check_workout (proposed_workout, day) 
+function random_index (max)
 {
-    // Check if workout of same type has been done that day
-    for (let i = 0; i < workout_schedule[day].workout.length; i++)
+    // Generate random index of given object array
+    let random_int = Math.floor(Math.random() * max);
+    return random_int;
+}
+
+
+function get_workout (workout_objects, workout_schedule)
+{
+    // Pick random workout to attempt to add to schedule
+    let index = random_index((workout_objects.length - 1));
+    let placed = false;
+    while (placed === false)
+    {
+        let day = random_index(6);
+        let unique_type = workout_type_conflict(workout_objects[index], workout_schedule[day]);
+        if (unique_type === true)
+        {
+            workout_schedule[day].workout.push(workout_objects[index]);
+            remove_workout(workout_objects[index], workout_objects);
+            placed = true;
+        }
+        else {continue;}
+    }
+}
+
+/*
+function get_run (runs)
+{
+    // Pick random strength training workout to attempt to add to schedule
+}
+
+
+function get_swim(swims)
+{
+    // Pick random strength training workout to attempt to add to schedule
+}
+
+
+function get_lift(strength_sessions)
+{
+    // Pick random strength training workout to attempt to add to schedule
+}
+*/
+
+function get_day()
+{
+    // Generate random day to place workout after check has passed
+    let random_day = Math.floor(Math.random() * 6);
+    return random_day;
+}
+
+function workout_type_conflict (proposed_workout, workout_schedule, day)
+{
+    // Ensure that workout type does not match type of other workouts scheduled on given day
+    for (let item = 0; item < workout_schedule[day].workout.length; i++)
     {
         if (proposed_workout.type == workout_schedule[day].workout[i].type) {return false;}
     }
-
-    // Check if workout name is already in the week schedule
-    for (let i = 0; i < workout_schedule.length; i++)
-    {
-        for (let j = 0; j < workout_schedule[day].workout.length; j++)
-        {
-            if (workout_schedule[i].workout.length > 0)
-            {
-                if (proposed_workout.name == workout_schedule[i].workout[j].name) {return false;}
-            }
-            else {break;}
-        }
-    }
-
-    // Proposed workout is good to add to schedule
     return true;
 }
 
-while (num_run != 0 || num_swim != 0 || num_lifts != 0)
-{
-    for (let day = 0; day < 7; day++)
-    {
-        // Skip reserved athletic regen day and
-        if (day === 4) {continue;}
 
-        if (!num_swim)
+function remove_workout (proposed_workout, workout_list)
+{
+    for (let workout = 0; workout < workout_list.length; workout++)
+    {
+        if (JSON.stringify(proposed_workout) === JSON.stringify(global_obj_list[workout]))
         {
-            let random_bit = Math.round(Math.random());
-            if (random_bit == 0)
-            {
-                let random_int = Math.floor(Math.random() * (swims.length - 1));
-                let unique_type = check_workout(swims[random_int], day);
-                if (unique_type == true) 
-                {
-                    workout_schedule[day].workout.push(swims[random_int]);
-                    num_swim -= 1;
-                    continue;
-                }
-            }
-            else {continue;} // iterate to next day in either case
-        }
-        if (!num_lifts)
-        {
-            let random_bit = Math.round(Math.random());
-            if (random_bit == 0)
-            {
-                let random_int = Math.floor(Math.random() * (strength_sessions.length - 1));
-                let unique_type = check_workout(strength_sessions[random_int], day);
-                if (unique_type == true) 
-                {
-                    workout_schedule[day].workout.push(strength_sessions[random_int]);
-                    num_lifts -= 1;
-                    continue;
-                }
-            }
-            else {continue;} 
-        }
-        if (!num_run)
-        {
-            let random_bit = Math.round(Math.random());
-            if (random_bit == 0)
-            {
-                let random_int = Math.floor(Math.random() * (runs.length - 1));
-                let unique_type = check_workout(runs[random_int], day);
-                if (unique_type) 
-                {
-                    workout_schedule[day].workout.push(runs[random_int]);
-                    num_run -= 1;
-                    continue;
-                }
-            }
-            else {continue;} 
+            workout_list.splice(workout,1);
         }
     }
 }
 
-// Friday is athletic regen day
-workout_schedule[4].workout = stretches[0];
+
+function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, miscellaneous)
+{
+    // This function takes all primitives and objects from main to construct and return schedule
+    while (num_run)
+    {
+        get_workout(runs, workout_schedule);
+    }
+    while (num_swim)
+    {
+        get_workout(swims, workout_schedule);
+    }
+    while (num_lifts)
+    {
+        get_workout(strength_sessions, workout_schedule);
+    }
+
+    return workout_schedule;
+}
 
 
-// Each day of the week will display title of workout, and workout
-// Print schedule to table
-let days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
-// make into for loop
-document.getElementById("monday_name_1").innerHTML = workout_schedule[0].workout[0].name;
-document.getElementById("monday_workout_1").innerHTML = workout_schedule[0].workout[0].workout;
-document.getElementById("monday_name_2").innerHTML = workout_schedule[0].workout[1].name;
-document.getElementById("monday_workout_2").innerHTML = workout_schedule[0].workout[1].workout;
-document.getElementById("monday_name_3").innerHTML = workout_schedule[0].workout[2].name;
-document.getElementById("monday_workout_3").innerHTML = workout_schedule[0].workout[2].workout;
+(function main(runs, swims, strength_sessions, stretches, miscellaneous)
+{
+    // Immedietaly Invoked Function Expression (IIFE)
+    // retrieve desired number of training sessions from previous page using URL
+    const link = window.location.href;
+    const split = link.split("?")[1].split("=")[1];
+    const decode = decodeURI(split);
+    const data = JSON.parse(decode);
 
-document.getElementById("tuesday_name_1").innerHTML = workout_schedule[1].workout[0].name;
-document.getElementById("tuesday_workout_1").innerHTML = workout_schedule[1].workout[0].workout;
-document.getElementById("tuesday_name_2").innerHTML = workout_schedule[1].workout[1].name;
-document.getElementById("tuesday_workout_").innerHTML = workout_schedule[1].workout[1].workout;
-document.getElementById("tuesday_name_3").innerHTML = workout_schedule[1].workout[2].name;
-document.getElementById("tuesday_workout_3").innerHTML = workout_schedule[1].workout[2].workout;
+    let num_run = data[0];
+    let num_swim = data[1];
+    let num_lifts = data[2];
 
-document.getElementById("wednesday_name_1").innerHTML = workout_schedule[2].workout[0].name;
-document.getElementById("wednesday_workout_1").innerHTML = workout_schedule[2].workout[0].workout;
-document.getElementById("wednesday_name_2").innerHTML = workout_schedule[2].workout[1].name;
-document.getElementById("wednesday_workout_2").innerHTML = workout_schedule[2].workout[1].workout;
-document.getElementById("wednesday_name_3").innerHTML = workout_schedule[2].workout[2].name;
-document.getElementById("wednesday_workout_3").innerHTML = workout_schedule[2].workout[2].workout;
+    let extended_training_day = black_saturday();
 
-document.getElementById("thursday_name_1").innerHTML = workout_schedule[3].workout[0].name;
-document.getElementById("thursday_workout_1").innerHTML = workout_schedule[3].workout[0].workout;
-document.getElementById("thursday_name_2").innerHTML = workout_schedule[3].workout[1].name;
-document.getElementById("thursday_workout_").innerHTML = workout_schedule[3].workout[1].workout;
-document.getElementById("thursday_name_3").innerHTML = workout_schedule[3].workout[2].name;
-document.getElementById("thursday_workout_3").innerHTML = workout_schedule[3].workout[2].workout;
 
-document.getElementById("friday_name_1").innerHTML = workout_schedule[4].workout[0].name;
-document.getElementById("friday_workout_1").innerHTML = workout_schedule[4].workout[0].workout;
-document.getElementById("friday_name_2").innerHTML = workout_schedule[4].workout[1].name;
-document.getElementById("friday_workout_2").innerHTML = workout_schedule[4].workout[1].workout;
-document.getElementById("friday_name_3").innerHTML = workout_schedule[4].workout[2].name;
-document.getElementById("friday_workout_3").innerHTML = workout_schedule[4].workout[2].workout;
+    // Create workout schedule to be filled with semi-random workouts
+    let workout_schedule = [{workout: []}, {workout: []},{workout: []},{workout: []},{workout: []},{workout: []},{workout: []}];
 
-document.getElementById("saturday_name_1").innerHTML = workout_schedule[5].workout[0].name;
-document.getElementById("saturday_workout_1").innerHTML = workout_schedule[5].workout[0].workout;
-document.getElementById("saturday_name_2").innerHTML = workout_schedule[5].workout[1].name;
-document.getElementById("saturday_workout_2").innerHTML = workout_schedule[5].workout[1].workout;
-document.getElementById("saturday_name_3").innerHTML = workout_schedule[5].workout[2].name;
-document.getElementById("saturdayday_workout_3").innerHTML = workout_schedule[5].workout[2].workout;
+    workout_schedule = fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous);
 
-document.getElementById("sunday_name_1").innerHTML = workout_schedule[6].workout[0].name;
-document.getElementById("sunday_workout_1").innerHTML = workout_schedule[6].workout[0].workout;
-document.getElementById("sunday_name_2").innerHTML = workout_schedule[6].workout[1].name;
-document.getElementById("sunday_workout_2").innerHTML = workout_schedule[6].workout[1].workout;
-document.getElementById("sunday_name_3").innerHTML = workout_schedule[6].workout[2].name;
-document.getElementById("sunday_workout_3").innerHTML = workout_schedule[6].workout[2].workout;
+    console.log(workout_schedule);
+    
+})(runs, swims, strength_sessions, stretches, miscellaneous);
