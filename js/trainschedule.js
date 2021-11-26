@@ -183,9 +183,9 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
     for (let day = 0; day < 7; day++)
     {
         // Skip reserved athletic regen day and
-        if (day == 4) {continue;}
+        if (day === 4) {continue;}
 
-        if (num_swim != 0)
+        if (!num_swim)
         {
             let random_bit = Math.round(Math.random());
             if (random_bit == 0)
@@ -201,7 +201,7 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
             }
             else {continue;} // iterate to next day in either case
         }
-        if (num_lifts != 0)
+        if (!num_lifts)
         {
             let random_bit = Math.round(Math.random());
             if (random_bit == 0)
@@ -217,14 +217,14 @@ while (num_run != 0 || num_swim != 0 || num_lifts != 0)
             }
             else {continue;} 
         }
-        if (num_run != 0)
+        if (!num_run)
         {
             let random_bit = Math.round(Math.random());
             if (random_bit == 0)
             {
                 let random_int = Math.floor(Math.random() * (runs.length - 1));
                 let unique_type = check_workout(runs[random_int], day);
-                if (unique_type == true) 
+                if (unique_type) 
                 {
                     workout_schedule[day].workout.push(runs[random_int]);
                     num_run -= 1;
@@ -242,6 +242,8 @@ workout_schedule[4].workout = stretches[0];
 
 // Each day of the week will display title of workout, and workout
 // Print schedule to table
+let days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+// make into for loop
 document.getElementById("monday_name_1").innerHTML = workout_schedule[0].workout[0].name;
 document.getElementById("monday_workout_1").innerHTML = workout_schedule[0].workout[0].workout;
 document.getElementById("monday_name_2").innerHTML = workout_schedule[0].workout[1].name;
