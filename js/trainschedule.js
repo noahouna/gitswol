@@ -30,7 +30,7 @@ const swims =
     focus: 'variable',
     workout: 'variable',
     distance_duration: 'variable'}
-]
+];
 
 const runs = 
 [
@@ -58,7 +58,7 @@ const runs =
     focus: 'distance', 
     workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice',
     distance_duration: '1100 yards' }
-]
+];
 
 const strength_sessions = 
 [
@@ -86,7 +86,7 @@ const strength_sessions =
     focus: ['aerobic'], 
     workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice',
     distance_duration: '1100 yards' }
-]
+];
 
 const stretches =
 [
@@ -95,7 +95,7 @@ const stretches =
     type: 'stretch',
     workout: 'Warm Up\n300yd choice\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice',
     distance_duration: '1900 yards' }
-]
+];
 
 const miscellaneous =
 [
@@ -123,15 +123,14 @@ const miscellaneous =
     focus: ['core', 'legs'], 
     workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice',
     distance_duration: '1100 yards' }
-]
+];
 // picking workout, check for type match same day (delete if picked), then picking random day to do workout
 
-function black_saturday (extended_training_day) {
+function black_saturday () {
     // Determine if week includes extended training day
     random_bit = Math.round(Math.random() - 0.1); // 60% chance for no ETD
-    if (random_bit == 0) {extended_training_day = false;}
-    else {extended_training_day = true;}
-    return extended_training_day;
+    if (random_bit == 0) {return false;}
+    else {return true;}
 }
 
 /*
@@ -216,7 +215,7 @@ function remove_workout (proposed_workout, workout_list)
 }
 
 
-function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, miscellaneous)
+function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous)
 {
     // This function takes all primitives and objects from main to construct and return schedule
     while (num_run)
@@ -231,6 +230,7 @@ function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_tra
     {
         get_workout(strength_sessions, workout_schedule);
     }
+    
 
     return workout_schedule;
 }
