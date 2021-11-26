@@ -101,13 +101,13 @@ const miscellaneous =
 [
 { 
     name: 'Grass and Gorillas',
-    type: 'Strength',
+    type: 'strength',
     focus: ['shoulders', 'core', 'triceps', 'legs'],
     workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice',
     distance_duration: '1900 yards' },
 {
     name: 'Murph',
-    type: 'Strength',
+    type: 'strength',
     focus: ['biceps', 'chest', 'triceps'],
     workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice',
     distance_duration: '2000 yards' },
@@ -119,7 +119,7 @@ const miscellaneous =
     distance_duration: '2200 yards' },
 { 
     name: 'Ruck',
-    type: 'Strength',
+    type: 'strength',
     focus: ['core', 'legs'], 
     workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice',
     distance_duration: '1100 yards' }
@@ -192,12 +192,12 @@ function get_day()
     return random_day;
 }
 
-function workout_type_conflict (proposed_workout, workout_schedule, day)
+function workout_type_conflict (proposed_workout, day_itenerary)
 {
     // Ensure that workout type does not match type of other workouts scheduled on given day
-    for (let item = 0; item < workout_schedule[day].workout.length; i++)
+    for (let item = 0; item < day_itenerary.workout.length; item++)
     {
-        if (proposed_workout.type == workout_schedule[day].workout[i].type) {return false;}
+        if (proposed_workout.type == day_itenerary.workout[item].type) {return false;}
     }
     return true;
 }
@@ -207,7 +207,7 @@ function remove_workout (proposed_workout, workout_list)
 {
     for (let workout = 0; workout < workout_list.length; workout++)
     {
-        if (JSON.stringify(proposed_workout) === JSON.stringify(global_obj_list[workout]))
+        if (JSON.stringify(proposed_workout) === JSON.stringify(workout_list[workout]))
         {
             workout_list.splice(workout,1);
         }
@@ -234,6 +234,8 @@ function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_tra
         num_lifts--;
     }
 
+    // Add stretching session
+    
     return workout_schedule;
 }
 
@@ -260,5 +262,5 @@ function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_tra
     workout_schedule = fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous);
 
     console.log(workout_schedule);
-    
+
 })(runs, swims, strength_sessions, stretches, miscellaneous);
