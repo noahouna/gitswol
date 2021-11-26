@@ -221,16 +221,18 @@ function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_tra
     while (num_run)
     {
         get_workout(runs, workout_schedule);
+        num_run--;
     }
     while (num_swim)
     {
         get_workout(swims, workout_schedule);
+        num_swim--;
     }
     while (num_lifts)
     {
         get_workout(strength_sessions, workout_schedule);
+        num_lifts--;
     }
-    
 
     return workout_schedule;
 }
