@@ -147,7 +147,7 @@ function random_index (max)
 }
 
 
-function get_workout (workout_objects, workout_schedule)
+function get_workout (workout_objects, workout_schedule, off_day)
 {
     // Pick random workout to attempt to add to schedule
     let index = random_index((workout_objects.length - 1));
@@ -155,6 +155,11 @@ function get_workout (workout_objects, workout_schedule)
     while (placed === false)
     {
         let day = random_index(6);
+        if (day === off_day)
+        {
+            // Leave athletic regen day clear
+            continue;
+        }
         let unique_type = workout_type_conflict(workout_objects[index], workout_schedule[day]);
         if (unique_type === true)
         {
@@ -166,12 +171,15 @@ function get_workout (workout_objects, workout_schedule)
     }
 }
 
-/*
-function get_run (runs)
-{
-    // Pick random strength training workout to attempt to add to schedule
-}
 
+function add_no_check (workout_objects, workout_schedule, day)
+{
+    // Pick random regen routine after all other training has been scheduled
+    let index = random_index((workout_objects.length - 1));
+    workout_schedule[day].workout.push(workout_objects[index]);
+    remove_workout(workout_objects[index], workout_objects);
+}
+/*
 
 function get_swim(swims)
 {
@@ -184,14 +192,14 @@ function get_lift(strength_sessions)
     // Pick random strength training workout to attempt to add to schedule
 }
 */
-
+/*
 function get_day()
 {
     // Generate random day to place workout after check has passed
     let random_day = Math.floor(Math.random() * 6);
     return random_day;
 }
-
+*/
 function workout_type_conflict (proposed_workout, day_itenerary)
 {
     // Ensure that workout type does not match type of other workouts scheduled on given day
@@ -215,27 +223,31 @@ function remove_workout (proposed_workout, workout_list)
 }
 
 
-function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous)
+function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous, off_day)
 {
     // This function takes all primitives and objects from main to construct and return schedule
     while (num_run)
     {
-        get_workout(runs, workout_schedule);
+        get_workout(runs, workout_schedule, off_day);
         num_run--;
     }
     while (num_swim)
     {
-        get_workout(swims, workout_schedule);
+        get_workout(swims, workout_schedule, off_day);
         num_swim--;
     }
     while (num_lifts)
     {
-        get_workout(strength_sessions, workout_schedule);
+        get_workout(strength_sessions, workout_schedule, off_day);
         num_lifts--;
     }
 
     // Add stretching session
-    
+    add_no_check(stretches, workout_schedule, off_day);
+
+    // Add extra miscellaneous session to Saturday if ETD is true
+    if (extended_training_day) {add_no_check(miscellaneous, workout_schedule, 5);}
+
     return workout_schedule;
 }
 
@@ -255,11 +267,12 @@ function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_tra
 
     let extended_training_day = black_saturday();
 
+    let off_day = 4; // Friday is athletic regen day
 
     // Create workout schedule to be filled with semi-random workouts
     let workout_schedule = [{workout: []}, {workout: []},{workout: []},{workout: []},{workout: []},{workout: []},{workout: []}];
 
-    workout_schedule = fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous);
+    workout_schedule = fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous, off_day);
 
     console.log(workout_schedule);
 
