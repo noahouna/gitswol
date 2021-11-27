@@ -154,7 +154,7 @@ function get_workout (workout_objects, workout_schedule, off_day)
     let placed = false;
     while (placed === false)
     {
-        let day = random_index(6);
+        let day = random_index(7);
         if (day === off_day)
         {
             // Leave athletic regen day clear
@@ -252,6 +252,22 @@ function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_tra
 }
 
 
+function print_schedule (workout_schedule)
+{
+    // use jQuery to print table
+    // for each day of the week, create table, create <tr>, create <th> and set to day, create <td> for each workout
+    let week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    for (let day = 0; day < 7; day++)
+    {
+        let newTable = $('<table><thead><tr><th>' + week[day] + '</th></tr></thead></table>');
+        $('.flexbox-container').append(newTable);
+
+        for (let entry = 0; entry < workout_schedule[day].workout.length; entry++)
+        $("table:contains('"+ week[day] + "')").append('<tbody><tr><td>' + workout_schedule[day].workout[entry].name + '</tbody></tr></td>');
+    }
+}
+
+
 (function main(runs, swims, strength_sessions, stretches, miscellaneous)
 {
     // Immedietaly Invoked Function Expression (IIFE)
@@ -275,5 +291,6 @@ function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_tra
     workout_schedule = fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous, off_day);
 
     console.log(workout_schedule);
+    print_schedule(workout_schedule);
 
 })(runs, swims, strength_sessions, stretches, miscellaneous);
