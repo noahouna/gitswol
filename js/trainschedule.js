@@ -38,7 +38,7 @@ const runs =
     name: 'Time Tree', 
     type: 'run',
     focus: 'pace',
-    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\nDynamic Stretching\n5 min jog\n\nMain Set\n1 min fast run\n1 min jog\n2 min fast run\n2 min jog\n3 min fast run\n3 min jog\n3 min fast run\n2 min jog\n2 min fast run\n1 min jog\n1 min fast run\nCool Down\n5 min jog',
     distance_duration: '1900 yards' },
 {
     name: 'Hards and Easys',
@@ -259,12 +259,18 @@ function print_schedule (workout_schedule)
     let week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     for (let day = 0; day < 7; day++)
     {
-        let newTable = $('<table><thead><tr><th>' + week[day] + '</th></tr></thead></table>');
+        let newTable = $("<table><thead><tr><th>" + week[day] + "</th></tr></thead><tbody id='" + week[day] + "' ></tbody></table>");
         $('.flexbox-container').append(newTable);
 
         for (let entry = 0; entry < workout_schedule[day].workout.length; entry++)
-        $("table:contains('"+ week[day] + "')").append('<tbody><tr><td>' + workout_schedule[day].workout[entry].name + '</tbody></tr></td>');
+        {
+            // Create row
+            $("#" + week[day]).append("<tr id='" + entry + "' ><td>" + workout_schedule[day].workout[entry].name + "</td></tr>");
+            //$("#" + week[day]).append('<tr><td>' + workout_schedule[day].workout[entry].name + '</td></tr>');
+            $("#" + entry).append("<td>" + workout_schedule[day].workout[entry].workout + "</td>");
+        }
     }
+    //$("tr:has('td:contains('"+ workout_schedule[0].workout[0].name + "'))").append('<td>' + workout_schedule[0].workout[0].workout + '</td>');
 }
 
 
