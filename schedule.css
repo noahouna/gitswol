@@ -13,6 +13,9 @@ th {
     font-size: 0.9em;
 }
   
+td {
+    white-space: pre-line;
+}
   
   .flexbox-container {
     min-height: 100vh;
