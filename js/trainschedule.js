@@ -124,7 +124,7 @@ const miscellaneous =
     workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice\n',
     distance_duration: '1100 yards' }
 ];
-// picking workout, check for type match same day (delete if picked), then picking random day to do workout
+
 
 function black_saturday () {
     // Determine if week includes extended training day
@@ -133,11 +133,6 @@ function black_saturday () {
     else {return true;}
 }
 
-/*
-May be useless with new design
-
-function random_bit() {let bit = Math.round(Math.random()); return bit; }
-*/
 
 function random_index (max)
 {
@@ -179,27 +174,8 @@ function add_no_check (workout_objects, workout_schedule, day)
     workout_schedule[day].workout.push(workout_objects[index]);
     remove_workout(workout_objects[index], workout_objects);
 }
-/*
-
-function get_swim(swims)
-{
-    // Pick random strength training workout to attempt to add to schedule
-}
 
 
-function get_lift(strength_sessions)
-{
-    // Pick random strength training workout to attempt to add to schedule
-}
-*/
-/*
-function get_day()
-{
-    // Generate random day to place workout after check has passed
-    let random_day = Math.floor(Math.random() * 6);
-    return random_day;
-}
-*/
 function workout_type_conflict (proposed_workout, day_itenerary)
 {
     // Ensure that workout type does not match type of other workouts scheduled on given day
@@ -254,11 +230,7 @@ function fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_tra
 
 function print_schedule (workout_schedule)
 {
-    // use jQuery to print table
-    // for each day of the week, create table, create <tr>, create <th> and set to day, create <td> for each workout
-
-    // Each day is a <th> each workout is <td>...only 2 <tr>
-    //let week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    
     let selector = ".flexbox-container";
     let HTML_tags = "<table><thead><tr></tr></thead><tbody></tbody></table>";
     create_table(selector, HTML_tags);
@@ -266,16 +238,13 @@ function print_schedule (workout_schedule)
     {
         append_day(day);
         // Embed table
-        (() => {let selector = $("tbody:first"); HTML_tags = "<td><table><thead><tr></tr></thead><tbody></tbody></table></td>";
+        (() => {let selector = $("tbody:first"); let HTML_tags = "<td><table><thead><tr></tr></thead><tbody id='" +  day + "'></tbody></table></td>";
             create_table(selector, HTML_tags);})();
         let num_workouts_for_day = workout_schedule[day].workout.length;
-        selector = "tbody:first";
-        append_workouts(workout_schedule, day, num_workouts_for_day, selector);
-        //let num_workouts_for_day = workout_schedule[day].workout.length;
-        //for (let workout = 0; workout < num_workouts_for_day; workout++)
-        //{
-        //    append_day(workout, week[day], workout_schedule);
-        //}
+        let day_schedule = workout_schedule[day].workout;
+
+        selector = "#" + day;
+        append_workouts(day_schedule, day, num_workouts_for_day, selector);
     }
 }
 
@@ -286,44 +255,26 @@ function append_day (day_index)
     let selector = $('thead > tr').first(); // select all <tr> that are a direct child of a <thead>
     let day = week[day_index];
     $(selector).append("<th>" + day + "</th>");
-    /*
-    let workout_name = workout_schedule[0].workout[entry].name;
-    $(selector).append("<th id='" + entry + "' ><td>" + workout_name + "</td></tr>");
-
-    identifier = "#" + entry;
-    let workout_plan = workout_schedule[0].workout[entry].workout;
-    workout_plan.replace('\n', '<br>');
-    console.log(workout_plan);
-    $(identifier).append("<td>" + workout_plan + "</td>"); */
-    //let selector = 'thead > tr';
-    // let selector = $(":contains('day')")
 }
 
 
-function append_workouts (workout_schedule, day, num_workouts, selector)
+function append_workouts (day_schedule, day, num_workouts, selector)
 {
-    selector = $(selector + ':' +nth-child(day));
-    for (let workout = 0; workout < num_workouts; workout++)
+    // select the nth child of the 1st tbody
+    selector = $(selector)
+    for (let schedule_item = 0; schedule_item < num_workouts; schedule_item++)
     {
-        
-    }
-    
-    
+        let workout_name = day_schedule[schedule_item].name;
+        let workout_descr = day_schedule[schedule_item].workout;
+        selector.append("<tr><td>" + workout_name + "</td> " + "<td>" + workout_descr + "</td></tr>");
+    }  
 }
 
 
 function create_table (selector, HTML_tags)
 {
-    //let HTML_tags = "<table><thead><tr></tr></thead><tbody></tbody></table>";
     let newTable = $(HTML_tags);
     $(selector).append(newTable);
-}
-
-
-function embed_table ()
-{
-    let selector = $("tbody:first");
-    create_table(selector, "<td><table><thead><tr></tr></thead><tbody></tbody></table></td>");
 }
 
 
@@ -349,7 +300,7 @@ function embed_table ()
 
     workout_schedule = fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous, off_day);
 
-    console.log(workout_schedule);
+    //console.log(workout_schedule);
     print_schedule(workout_schedule);
 
 })(runs, swims, strength_sessions, stretches, miscellaneous);
