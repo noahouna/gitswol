@@ -1,28 +1,28 @@
 const swims = 
 [
 { 
-    name: 'Triathlon Technique Workout',
+    name: 'Triathlon\nTechnique\nWorkout',
     type: 'swim',
     focus: 'technique',
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\n300yd choice\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice\n\n',
     distance_duration: '1900 yards' },
 {
-    name: 'Triathlon Stamina Workout',
+    name: 'Triathlon\nStamina\nWorkout',
     type: 'swim',
     focus: 'aerobic',
-    workout: 'Warm Up\n300yd mixed stroke (free, breast, css)\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\n300yd mixed stroke (free, breast, css)\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice\n\n',
     distance_duration: '2000 yards' },
 {
-    name: 'Triathlon Speed Workout',
+    name: 'Triathlon\nSpeed\nWorkout',
     type: 'swim',
     focus: 'speed',
-    workout: 'Warm Up\n200yd easy\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy',
+    workout: 'Warm Up\n200yd easy\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy\n\n',
     distance_duration: '2200 yards' },
 {
     name: '5x Ups', 
     type: 'swim',
     focus: 'aerobic', 
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice\n',
     distance_duration: '1100 yards' },
 {
     name: 'Master Swim',
@@ -38,62 +38,62 @@ const runs =
     name: 'Time Tree', 
     type: 'run',
     focus: 'pace',
-    workout: 'Warm Up\nDynamic Stretching\n5 min jog\n\nMain Set\n1 min fast run\n1 min jog\n2 min fast run\n2 min jog\n3 min fast run\n3 min jog\n3 min fast run\n2 min jog\n2 min fast run\n1 min jog\n1 min fast run\nCool Down\n5 min jog',
+    workout: 'Warm Up\nDynamic Stretching\n5 min jog\n\nMain Set\n1 min fast run\n1 min jog\n2 min fast run\n2 min jog\n3 min fast run\n3 min jog\n3 min fast run\n2 min jog\n2 min fast run\n1 min jog\n1 min fast run\nCool Down\n5 min jog\n',
     distance_duration: '1900 yards' },
 {
     name: 'Hards and Easys',
     type: 'run',
     focus: 'sprinting',
-    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice\n',
     distance_duration: '2000 yards' },
 {
     name: 'Sprints and Planks',
     type: 'run',
     focus: 'sprinting',
-    workout: 'Warm Up\nDynamic Stretching\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy',
+    workout: 'Warm Up\nDynamic Stretching\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy\n',
     distance_duration: '2200 yards' },
 { 
     name: 'Distance Run',
     type: 'run',
     focus: 'distance', 
-    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice\n',
     distance_duration: '1100 yards' }
 ];
 
 const strength_sessions = 
 [
 { 
-    name: 'Functional Push Session',
+    name: 'Functional\nPush\nSession',
     type: 'strength',
     focus: ['push'],
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\n300yd choice\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice\n',
     distance_duration: '1900 yards' },
 {
-    name: 'Functional Pull Session',
+    name: 'Functional\nPull\nSession',
     type: 'strength',
     focus: ['aerobic'],
-    workout: 'Warm Up\n300yd mixed stroke (free, breast, css)\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\n300yd mixed stroke (free, breast, css)\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice\n',
     distance_duration: '2000 yards' },
 {
-    name: 'Functional Leg Session',
+    name: 'Functional\nLeg\nSession',
     type: 'strength',
     focus: ['speed'],
-    workout: 'Warm Up\n200yd easy\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy',
+    workout: 'Warm Up\n200yd easy\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy\n',
     distance_duration: '2200 yards' },
 { 
-    name: 'Full Body Power Session',
+    name: 'Full\nBody\nPower\nSession',
     type: 'strength',
     focus: ['aerobic'], 
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice\n',
     distance_duration: '1100 yards' }
 ];
 
 const stretches =
 [
 { 
-    name: 'Flexibility & Mobility Routine',
+    name: 'Flexibility & Mobility\nRoutine',
     type: 'stretch',
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\n300yd choice\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice\n',
     distance_duration: '1900 yards' }
 ];
 
@@ -109,19 +109,19 @@ const miscellaneous =
     name: 'Murph',
     type: 'strength',
     focus: ['biceps', 'chest', 'triceps'],
-    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice\n',
     distance_duration: '2000 yards' },
 {
     name: 'Water Con',
     type: 'swim',
     focus: 'technique',
-    workout: 'Warm Up\n200yd breast\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy',
+    workout: 'Warm Up\n200yd breast\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy\n',
     distance_duration: '2200 yards' },
 { 
     name: 'Ruck',
     type: 'strength',
     focus: ['core', 'legs'], 
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice\n',
     distance_duration: '1100 yards' }
 ];
 // picking workout, check for type match same day (delete if picked), then picking random day to do workout
@@ -256,21 +256,74 @@ function print_schedule (workout_schedule)
 {
     // use jQuery to print table
     // for each day of the week, create table, create <tr>, create <th> and set to day, create <td> for each workout
-    let week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    // Each day is a <th> each workout is <td>...only 2 <tr>
+    //let week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    let selector = ".flexbox-container";
+    let HTML_tags = "<table><thead><tr></tr></thead><tbody></tbody></table>";
+    create_table(selector, HTML_tags);
     for (let day = 0; day < 7; day++)
     {
-        let newTable = $("<table><thead><tr><th>" + week[day] + "</th></tr></thead><tbody id='" + week[day] + "' ></tbody></table>");
-        $('.flexbox-container').append(newTable);
-
-        for (let entry = 0; entry < workout_schedule[day].workout.length; entry++)
-        {
-            // Create row
-            $("#" + week[day]).append("<tr id='" + entry + "' ><td>" + workout_schedule[day].workout[entry].name + "</td></tr>");
-            //$("#" + week[day]).append('<tr><td>' + workout_schedule[day].workout[entry].name + '</td></tr>');
-            $("#" + entry).append("<td>" + workout_schedule[day].workout[entry].workout + "</td>");
-        }
+        append_day(day);
+        // Embed table
+        (() => {let selector = $("tbody:first"); HTML_tags = "<td><table><thead><tr></tr></thead><tbody></tbody></table></td>";
+            create_table(selector, HTML_tags);})();
+        let num_workouts_for_day = workout_schedule[day].workout.length;
+        selector = "tbody:first";
+        append_workouts(workout_schedule, day, num_workouts_for_day, selector);
+        //let num_workouts_for_day = workout_schedule[day].workout.length;
+        //for (let workout = 0; workout < num_workouts_for_day; workout++)
+        //{
+        //    append_day(workout, week[day], workout_schedule);
+        //}
     }
-    //$("tr:has('td:contains('"+ workout_schedule[0].workout[0].name + "'))").append('<td>' + workout_schedule[0].workout[0].workout + '</td>');
+}
+
+
+function append_day (day_index)
+{
+    let week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    let selector = $('thead > tr').first(); // select all <tr> that are a direct child of a <thead>
+    let day = week[day_index];
+    $(selector).append("<th>" + day + "</th>");
+    /*
+    let workout_name = workout_schedule[0].workout[entry].name;
+    $(selector).append("<th id='" + entry + "' ><td>" + workout_name + "</td></tr>");
+
+    identifier = "#" + entry;
+    let workout_plan = workout_schedule[0].workout[entry].workout;
+    workout_plan.replace('\n', '<br>');
+    console.log(workout_plan);
+    $(identifier).append("<td>" + workout_plan + "</td>"); */
+    //let selector = 'thead > tr';
+    // let selector = $(":contains('day')")
+}
+
+
+function append_workouts (workout_schedule, day, num_workouts, selector)
+{
+    selector = $(selector + ':' +nth-child(day));
+    for (let workout = 0; workout < num_workouts; workout++)
+    {
+        
+    }
+    
+    
+}
+
+
+function create_table (selector, HTML_tags)
+{
+    //let HTML_tags = "<table><thead><tr></tr></thead><tbody></tbody></table>";
+    let newTable = $(HTML_tags);
+    $(selector).append(newTable);
+}
+
+
+function embed_table ()
+{
+    let selector = $("tbody:first");
+    create_table(selector, "<td><table><thead><tr></tr></thead><tbody></tbody></table></td>");
 }
 
 
