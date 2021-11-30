@@ -44,19 +44,19 @@ const runs =
     name: 'Hards and Easys',
     type: 'run',
     focus: 'sprinting',
-    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice\n',
+    workout: 'Warm Up\nDynamic Stretching\n1/2 mi jog\n\nMain Set\n\n400m sprint\n400m jog\nrepeat for desired #miles\n\nCool Down\n1/2 mi jog\nStatic Stretching\n',
     distance_duration: '2000 yards' },
 {
     name: 'Sprints and Planks',
     type: 'run',
     focus: 'sprinting',
-    workout: 'Warm Up\nDynamic Stretching\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy\n',
+    workout: 'Warm Up\nDynamic Stretching\n1/2 mi jog\n\nMain Set\n1 length sprint\n1 min plank\nrepeat for desired #rounds\n\nCool Down\n800m jog\n',
     distance_duration: '2200 yards' },
 { 
     name: 'Distance Run',
     type: 'run',
     focus: 'distance', 
-    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice\n',
+    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n3+ mile run\n(Try to only breathe through nose\n\nCool Down\nStatic Stretch\n',
     distance_duration: '1100 yards' }
 ];
 
@@ -66,25 +66,25 @@ const strength_sessions =
     name: 'Functional\nPush\nSession',
     type: 'strength',
     focus: ['push'],
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice\n',
+    workout: 'Warm Up\nStatic Stretch\n\nMain Set\nMilitary Press 2x10\n(RPE: 9 -Stop just before technical failure)\nDumbbell Press 2x10\n(RPE: 9 - Switch immediately to push ups and perform to failure (mechanical dropset))\nRing dips 2 x Technical Failure (Optionally add weight but remove weight and continue once you reach TF. Technical failure is the point at which your form is compromised.)\nPush Up Sequence: 5 x Push Ups > 2 x Clapping Push Ups > 2 x One Hand > 2 x Other Hand > Kick Through > Other Side > Repeat Until Failure - Whole Sequence x 2 - switch these up over time\nOffset Med Ball Push Ups to Burpee to Slam (Alternating sides) - 2x1 Minute\nPush Ups (Complete 200 keepinng rest time to an absolute minimum)\nHeavy bag HIIT (Tabata - 20 sec on, 10 sec off, 8 rounds)\n2 min hand-eye coordination\nBattle ropes (3 x 1 min with 30 sec rest)\nBand/Cable Press/Punch Out 2 x 10\n',
     distance_duration: '1900 yards' },
 {
     name: 'Functional\nPull\nSession',
     type: 'strength',
     focus: ['aerobic'],
-    workout: 'Warm Up\n300yd mixed stroke (free, breast, css)\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice\n',
+    workout: 'Warm Up\nStatic Stretch\n\nMain Set\nMuscle Ups 2 x Technical failure (follow immediately with chin ups to failure)\nBent rows 2 x 10 (RPE: 8)\nDumbbell rows 2 x 10 (RPE: 8)\nRope climbs 2 x Technical Failure\nGamma cast / Kettlebell halos x 50 (RPE: 9)\nAtlas swings x 50 (RPE: 9)\nPull ups (Complete 50 keeping rest time to an absolute minimum. Hand-eye drills during rest time. Optionally add weight.)\nBodyweight row 2 x Failure (This should be high reps - 20-50)\nBand/Cable Row 2 x 20\nBulgarian Bag Freestyle 2 x 1 min (Should include swing, halos, snatch RPE: 8)\n2 min hand-eye coordination\n10 min row\n',
     distance_duration: '2000 yards' },
 {
     name: 'Functional\nLeg\nSession',
     type: 'strength',
     focus: ['speed'],
-    workout: 'Warm Up\n200yd easy\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy\n',
+    workout: 'Warm Up\nStatic Stretch\n\nMain Set\nPistol Squats 2 x Technical Failure on each side\n2 x Weighted squat jumps (RPE: 8 - make sure you are absorbing impact, no valgus knees, add weight slowly)\nRucking/Loaded Carry (1 mi, choose a weight for RPE: 9 - almost the most you can do)\nHill Sprints/High Knees (Tabata)\nAgility ladder (no rest before this one)\nKettlebell side squat\n100 Squats (min time, min rest)\n100 Hindu Squats (min time, min rest - aim for 1 set)\nOverhead Weighted Lunge Walks 2 x 1 min (RPE: 8 Do not continue if you lose form, switch to no weight for safety)\nSequence: Sandbag Clean > Squat > Overhead Press > Lunge Either Side - Repeat sequence to technical failure\n1 min keepy ups\nAb roll outs 3 x Technical Failure\nMed Ball Leg Raises 3 x Ab Roll Outs (Followed immediately by leg raises without med balls)\n3 x V-Ups\n',
     distance_duration: '2200 yards' },
 { 
     name: 'Full\nBody\nPower\nSession',
     type: 'strength',
     focus: ['aerobic'], 
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice\n',
+    workout: 'Warm Up\nStatic Stretch\n\nMain Set\nDeadlift 3 x 80%1RM (80% of one rep maximum performed explosively)\nBench Press 3 x 4 80%1RM\nSquat 3 x 4 80%1RM\n',
     distance_duration: '1100 yards' }
 ];
 
@@ -93,7 +93,7 @@ const stretches =
 { 
     name: 'Flexibility & Mobility\nRoutine',
     type: 'stretch',
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice\n',
+    workout: '<a id="upperbodyvid" href="https://youtu.be/pLnI4b3QSgM">Upper Body Stretching Routine</a><br><a id="lowerbodyvid" href="https://youtu.be/nsAmvXgz-Os">Lower Body Stretching Routine</a>\n',
     distance_duration: '1900 yards' }
 ];
 
@@ -103,25 +103,25 @@ const miscellaneous =
     name: 'Grass and Gorillas',
     type: 'strength',
     focus: ['shoulders', 'core', 'triceps', 'legs'],
-    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n(2 rounds) 8x50 as 25yd drill, 25yd swim, followed by 100yd easy\n(2 rounds) 150yd as 50yd swim, 50yd drill, 50yd swim\n(2 rounds) 100yd as 25 yd drill, 75yd swim\n\nCool Down\n100yd choice',
+    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n(All exercises done for 1 length)\nBear Crawl\nSpiderman Low Crawl\nBurpees Forward\nForward Roll\nFrog Jump w/ hands\nCrab Walk\nDuck Walk\nLow Crawl\nHigh Crawl\nLateral Scissor Hops\n2 x Farmers Carry\n',
     distance_duration: '1900 yards' },
 {
     name: 'Murph',
     type: 'strength',
     focus: ['biceps', 'chest', 'triceps'],
-    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n100yd w/ 10s rest\n150yd w/ 15s rest\n200yd w/ 10s rest\n150yd w/ 15s rest\n100yd w/ 10s rest\n100yd super slow recovery w/ 60s rest\nrepeat for one more round\n\nCool Down\n100yd choice\n',
+    workout: 'Warm Up\nDynamic Stretching\n\nMain Set\n1 mi run\n100 pull ups\n200 push ups\n300 air squats\n(can break up in any way/order, can wear a weight vest)\n1 mi run\n',
     distance_duration: '2000 yards' },
 {
     name: 'Water Con',
     type: 'swim',
     focus: 'technique',
-    workout: 'Warm Up\n200yd breast\n4x50yd increasing speed w/ 20s rest\n100yd easy\n\nMain Set\n(2 rounds) 8x50yd as 25yd fast and 25yd easy w/ 20s rest, followed by 100yd easy\n4x100yd increasing speed per 25yd w/ 30s rest\n100yd easy\n\nCool Down\n200yd easy\n',
+    workout: 'Warm Up\n200yd breast\n5x25yd underwater on 2 min\n3 min snorkel breathing (no passing)\n2 min snorkel breathing (w/ passing)\n20 min tread\n',
     distance_duration: '2200 yards' },
 { 
     name: 'Ruck',
     type: 'strength',
     focus: ['core', 'legs'], 
-    workout: 'Warm Up\n300yd choice\n\nMain Set\n100yd, 5 push ups\n100yd, 10 push ups\n100yd, 15 push ups\n100yd, 20 push ups\n100yd, 15 push ups\n100yd, 10 push ups\n100yd, 5 push ups\n\nCool Down\n100yd choice\n',
+    workout: 'Warm Up\nDynamic Stretching\n\n',
     distance_duration: '1100 yards' }
 ];
 
@@ -243,8 +243,8 @@ function print_schedule (workout_schedule)
         let num_workouts_for_day = workout_schedule[day].workout.length;
         let day_schedule = workout_schedule[day].workout;
 
-        selector = "#" + day;
-        append_workouts(day_schedule, day, num_workouts_for_day, selector);
+        //selector = "#" + day;
+        append_workouts(day_schedule, day, num_workouts_for_day);
     }
 }
 
@@ -258,15 +258,17 @@ function append_day (day_index)
 }
 
 
-function append_workouts (day_schedule, day, num_workouts, selector)
+function append_workouts (day_schedule, day, num_workouts)
 {
     // select the nth child of the 1st tbody
-    selector = $(selector)
+    let selector = "#" + day;
+    //selector = $(selector);
     for (let schedule_item = 0; schedule_item < num_workouts; schedule_item++)
     {
         let workout_name = day_schedule[schedule_item].name;
         let workout_descr = day_schedule[schedule_item].workout;
-        selector.append("<tr><td>" + workout_name + "</td> " + "<td>" + workout_descr + "</td></tr>");
+        if (day_schedule[schedule_item].type === 'stretch') {$(selector).append("<tr><td>" + workout_name + "</td> " + "<td>" + workout_descr + "</td></tr>");}
+        else {$(selector).append("<tr><td>" + workout_name + "</td> " + "<td>" + workout_descr + "</td></tr>");}
     }  
 }
 
@@ -300,7 +302,7 @@ function create_table (selector, HTML_tags)
 
     workout_schedule = fill_schedule(num_run,num_swim,num_lifts,workout_schedule, extended_training_day, runs, swims, strength_sessions, stretches, miscellaneous, off_day);
 
-    //console.log(workout_schedule);
+    console.log(workout_schedule);
     print_schedule(workout_schedule);
 
 })(runs, swims, strength_sessions, stretches, miscellaneous);

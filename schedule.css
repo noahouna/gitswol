@@ -16,6 +16,15 @@ th {
 td {
     white-space: pre-line;
 }
+
+a {
+  color: #000000;
+  text-decoration: none;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 8px;
+  align-items: center;
+}
+a:hover {background-color: #B22222;opacity: 0.8;}
   
   .flexbox-container {
     min-height: 100vh;
