@@ -289,9 +289,10 @@ function create_table (selector, HTML_tags)
     const decode = decodeURI(split);
     const data = JSON.parse(decode);
 
-    let num_run = data[0];
-    let num_swim = data[1];
-    let num_lifts = data[2];
+    let num_run = parseInt(data[0], 10);
+    let num_swim = parseInt(data[1], 10);
+    let num_lifts = parseInt(data[2], 10);
+    console.log(typeof num_run);
 
     let extended_training_day = black_saturday();
 
